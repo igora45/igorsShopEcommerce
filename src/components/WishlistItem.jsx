@@ -10,31 +10,33 @@ const Container = styled.div`
 `;
 const Wrapper = styled.div`
   display: flex;
+  height: 20rem;
+  margin-bottom: 3rem;
+  margin-top: 1rem;
+  column-gap: 1.5rem;
+  row-gap: 2rem;
+
   position: relative;
   width: 100%;
-  max-width: 600px;
-  flex-wrap: wrap;
-  column-gap: 2rem;
-  row-gap: 2rem;
-  justify-content: space-around;
-  margin: 1rem 2rem;
+  max-width: 500px;
 `;
 const Image = styled.img`
   width: 300px;
   height: 300px;
 `;
 const ProductName = styled.div`
-  font-size: 25px;
+  font-size: 20px;
 `;
 const ProductPrice = styled.div`
-  font-size: 20px;
+  font-size: 16px;
 `;
 const Info = styled.div`
   row-gap: 3rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  flex: 1;
+  padding: 3rem 1rem;
+  justify-content: space-evenly;
+  align-items: start;
 `;
 const Icons = styled.div`
   display: flex;
