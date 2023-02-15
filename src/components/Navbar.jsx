@@ -7,6 +7,7 @@ import { useContext, useState } from 'react';
 import { Register } from '../pages/Register';
 import { ShopContext } from '../context/shop-context';
 import { Login } from '../pages/Login';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 
 const Container = styled.div`
   height: 4.5rem;
@@ -82,8 +83,14 @@ const LoginContainer = styled.div`
 `;
 
 export const Navbar = () => {
-  const { BagItems, openLogin, setOpenLogin, openRegister, setOpenRegister } =
-    useContext(ShopContext);
+  const {
+    BagItems,
+    openLogin,
+    setOpenLogin,
+    openRegister,
+    setOpenRegister,
+    WishListItems,
+  } = useContext(ShopContext);
   return (
     <Container>
       <LoginContainer>
@@ -106,6 +113,11 @@ export const Navbar = () => {
         <Right>
           <MenuLink onClick={() => setOpenRegister(true)}>REGISTER</MenuLink>
           <MenuLink onClick={() => setOpenLogin(true)}>SIGN IN</MenuLink>
+          <MenuLink to="/wishlist">
+            <Badge badgeContent={WishListItems()} color="primary">
+              <FavoriteBorderOutlinedIcon color="black" />
+            </Badge>
+          </MenuLink>
           <MenuLink to="/cart">
             <Badge badgeContent={BagItems()} color="primary">
               <ShoppingCartOutlinedIcon color="black" />

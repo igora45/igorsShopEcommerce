@@ -4,6 +4,7 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import { useContext, useState } from 'react';
 import { ShopContext } from '../context/shop-context';
+import CheckCircleOutlineOutlinedIcon from '@mui/icons-material/CheckCircleOutlineOutlined';
 const Info = styled.div`
   display: none;
   position: absolute;
@@ -58,27 +59,85 @@ const Circle = styled.div`
   position: absolute;
   background-color: white;
 `;
-const IconStyle = {
-  fontSize: '1.5rem',
-};
+
+const AddedContainer = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 3px;
+  width: 60%;
+  height: 45%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+const Title = styled.p`
+  color: white;
+  margin-bottom: 1rem;
+  font-size: 20px;
+`;
+const Emoji = styled.p`
+  color: white;
+`;
 
 export const Product = ({ item, key }) => {
-  const { AddToCart } = useContext(ShopContext);
+  const { AddToCart, AddToWishList } = useContext(ShopContext);
+  const [addedToCart, setAddedToCart] = useState(false);
+  const [addedToWish, setAddedToWish] = useState(false);
+
+  const AddItemCart = item => {
+    AddToCart(item);
+    setAddedToCart(true);
+    setTimeout(() => {
+      setAddedToCart(false);
+    }, 1000);
+  };
+  const AddItemWist = item => {
+    AddToWishList(item);
+    setAddedToWish(true);
+
+    setTimeout(() => {
+      setAddedToWish(false);
+    }, 1000);
+  };
+  const IconStyle = {
+    fontSize: '1.5rem',
+  };
   return (
     <Container>
       <Circle />
       <Image src={item.img} />
       <Info>
-        <Icon onClick={() => AddToCart(item.id)}>
+        <Icon onClick={() => AddItemCart(item.id)}>
           <ShoppingCartOutlinedIcon style={IconStyle} />
         </Icon>
         <Icon>
           <SearchOutlinedIcon style={IconStyle} />
         </Icon>
-        <Icon>
+        <Icon onClick={() => AddItemWist(item.id)}>
           <FavoriteBorderOutlinedIcon style={IconStyle} />
         </Icon>
       </Info>
+      {addedToCart && (
+        <AddedContainer>
+          <Title>Added to Cart!</Title>
+          <Emoji>
+            <CheckCircleOutlineOutlinedIcon style={{ fontSize: '1.8rem' }} />
+          </Emoji>
+        </AddedContainer>
+      )}
+      {addedToWish && (
+        <AddedContainer>
+          <Title>Added to Wishlist!</Title>
+          <Emoji>
+            <CheckCircleOutlineOutlinedIcon style={{ fontSize: '1.8rem' }} />
+          </Emoji>
+        </AddedContainer>
+      )}
     </Container>
   );
 };

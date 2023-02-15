@@ -59,6 +59,7 @@ const Submit = styled.input`
   color: white;
   align-self: center;
   margin-bottom: 30px;
+  border: none;
   cursor: pointer;
 `;
 const LinkContainer = styled.div`

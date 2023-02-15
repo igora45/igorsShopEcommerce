@@ -13,9 +13,24 @@ const getDefaultValue = () => {
 
 export const ShopContextProvider = prop => {
   const [cartItems, setCartItems] = useState(getDefaultValue());
+  const [wishItems, setWishItems] = useState(getDefaultValue());
   const [openRegister, setOpenRegister] = useState(false);
   const [openLogin, setOpenLogin] = useState(false);
 
+  const AddToWishList = itemId => {
+    setWishItems(prev => ({ ...prev, [itemId]: 1 }));
+  };
+  const RemoveFromWishList = itemId => {
+    setWishItems(prev => ({ ...prev, [itemId]: 0 }));
+  };
+
+  const WishListItems = () => {
+    let items = 0;
+    for (let item in wishItems) {
+      items += wishItems[item];
+    }
+    return items;
+  };
   const GetTotalAmount = () => {
     let total = 0;
     for (const item in cartItems) {
@@ -43,6 +58,11 @@ export const ShopContextProvider = prop => {
   };
 
   const context = {
+    WishListItems,
+    wishItems,
+    setWishItems,
+    AddToWishList,
+    RemoveFromWishList,
     AddToCart,
     cartItems,
     RemoveFromCart,

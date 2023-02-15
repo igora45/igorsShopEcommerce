@@ -12,9 +12,17 @@ const Wrapper = styled.div`
   display: flex;
   height: 20rem;
   margin-bottom: 3rem;
+  margin-top: 1rem;
+  column-gap: 1.5rem;
+  row-gap: 2rem;
+
+  position: relative;
+  width: 100%;
+  max-width: 500px;
 `;
 const Image = styled.img`
-  width: 20rem;
+  width: 300px;
+  height: 300px;
 `;
 const InfoProduct = styled.div`
   display: flex;
