@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 
   position: relative;
   width: 100%;
-  max-width: 500px;
+  max-width: 600px;
 `;
 const Image = styled.img`
   width: 300px;
