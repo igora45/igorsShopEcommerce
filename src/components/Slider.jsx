@@ -30,7 +30,6 @@ const Arrow = styled.div`
   opacity: 0.6;
   z-index: 1;
 `;
-
 const Wrapper = styled.div`
   height: 100%;
   display: flex;
@@ -51,7 +50,11 @@ const ImgContainer = styled.div`
 `;
 const Image = styled.img`
   height: 80%;
-  width: 100%;
+  width: 750px;
+
+  @media (max-width: 1500px) {
+    width: 600px;
+  }
 `;
 const InfoContainer = styled.div`
   flex: 1;

@@ -12,11 +12,22 @@ const Container = styled.div``;
 const Wrapper = styled.div`
   padding: 20px;
   min-height: 50vh;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    'a a'
+    'b b'
+    'c d';
+  justify-content: center;
+  max-width: 1600px;
+  margin: 0 auto;
 `;
 const Title = styled.p`
   font-size: 40px;
   font-weight: 100;
   text-align: center;
+  grid-area: a;
 `;
 const Total = styled.div`
   display: flex;
@@ -29,6 +40,7 @@ const Top = styled.div`
   align-items: center;
   margin: 30px 0;
   margin-bottom: 3rem;
+  grid-area: b;
 `;
 const TopButton = styled(Link)`
   background: none;
@@ -48,11 +60,40 @@ const TopText = styled(Link)`
   font-size: 16px;
   color: black;
 `;
+const Center = styled.div`
+  grid-area: c;
+  justify-self: end;
+  width: 100%;
+  max-width: 800px;
+`;
+const Summary = styled.div`
+  grid-area: d;
+  width: 400px;
+  margin-left: 4rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  padding: 1rem;
+  height: 30vh;
+  justify-self: end;
+`;
+const SummaryTitle = styled.div`
+  font-size: 25px;
+`;
+const SumaryItemText = styled.div``;
+const SummaryColumn = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 1.3rem 0;
+`;
+const SummaryValue = styled.div``;
 
 export const Cart = () => {
-  const { cartItems, GetTotalAmount, BagItems } = useContext(ShopContext);
+  const { cartItems, GetTotalAmount, BagItems, WishListItems } =
+    useContext(ShopContext);
 
   let TotalAmountValue = GetTotalAmount();
+
   return (
     <Container>
       <Navbar />
@@ -63,17 +104,46 @@ export const Cart = () => {
           <TopButton to="/">CONTINUE SHOPPING</TopButton>
           <TopTexts>
             <TopText>Shopping Bag ({BagItems()})</TopText>
-            <TopText to="/wishlist">Your Wishlist (0)</TopText>
+            <TopText to="/wishlist">Your Wishlist ({WishListItems()})</TopText>
           </TopTexts>
           <TopButton type="filled">CHECKOUT NOW</TopButton>
         </Top>
-        {AllProducts.map(product => {
-          if (cartItems[product.id]) {
-            return <CartItem data={product} />;
-          }
-        })}
+
+        <Center>
+          {AllProducts.map(product => {
+            if (cartItems[product.id]) {
+              return <CartItem data={product} />;
+            }
+          })}
+        </Center>
+        <Summary>
+          <SummaryTitle>ORDER SUMMARY</SummaryTitle>
+
+          <SummaryColumn>
+            <SumaryItemText>Subtotal</SumaryItemText>
+            <SummaryValue>${TotalAmountValue.toFixed(2)}</SummaryValue>
+          </SummaryColumn>
+
+          <SummaryColumn>
+            <SumaryItemText>Estimated Shipping</SumaryItemText>
+            <SummaryValue>$ 9.60</SummaryValue>
+          </SummaryColumn>
+
+          <SummaryColumn>
+            <SumaryItemText>Shipping Discount</SumaryItemText>
+            <SummaryValue>$ -5.90</SummaryValue>
+          </SummaryColumn>
+
+          <SummaryColumn>
+            <SumaryItemText>Total</SumaryItemText>
+            <SummaryValue>${TotalAmountValue.toFixed(2)}</SummaryValue>
+          </SummaryColumn>
+
+          <TopButton type="filled" local="summary">
+            CHECKOUT NOW
+          </TopButton>
+        </Summary>
       </Wrapper>
-      <Total>Total: ${TotalAmountValue.toFixed(2)}</Total>
       <Footer />
     </Container>
   );

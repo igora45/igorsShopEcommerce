@@ -11,8 +11,13 @@ import { AllProducts } from '../data';
 
 const Container = styled.div``;
 const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 20px;
-  min-height: 50vh;
+  min-height: 56vh;
+  max-width: 1600px;
+  margin: 0 auto;
 `;
 const Title = styled.div`
   font-size: 40px;
@@ -45,8 +50,15 @@ const TopText = styled(Link)`
   color: black;
 `;
 
+const Center = styled.div`
+  width: 100%;
+  max-width: 800px;
+  justify-content: center;
+  align-self: center;
+`;
+
 export const WishList = () => {
-  const { BagItems, wishItems } = useContext(ShopContext);
+  const { BagItems, wishItems, WishListItems } = useContext(ShopContext);
   return (
     <Container>
       <Navbar />
@@ -57,15 +69,17 @@ export const WishList = () => {
           <TopButton to="/">CONTINUE SHOPPING</TopButton>
           <TopTexts>
             <TopText to="/cart">Shopping Bag ({BagItems()})</TopText>
-            <TopText to="/wishlist">Your Wishlist (0)</TopText>
+            <TopText to="/wishlist">Your Wishlist ({WishListItems()})</TopText>
           </TopTexts>
           <TopButton type="filled">CHECKOUT NOW</TopButton>
         </Top>
-        {AllProducts.map(product => {
-          if (wishItems[product.id] > 0) {
-            return <WishlistItem item={product} />;
-          }
-        })}
+        <Center>
+          {AllProducts.map(product => {
+            if (wishItems[product.id] > 0) {
+              return <WishlistItem item={product} />;
+            }
+          })}
+        </Center>
       </Wrapper>
 
       <Footer />

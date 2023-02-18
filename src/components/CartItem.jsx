@@ -6,29 +6,40 @@ import { ShopContext } from '../context/shop-context';
 
 const Container = styled.div`
   display: flex;
-  justify-content: center;
 `;
 const Wrapper = styled.div`
   display: flex;
-  height: 20rem;
   margin-bottom: 3rem;
   margin-top: 1rem;
   column-gap: 1.5rem;
   row-gap: 2rem;
-
+  padding: 1rem;
   position: relative;
   width: 100%;
-  max-width: 600px;
+  max-width: 800px;
+  transition: all 200ms ease;
+  border-radius: 5px;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  &:hover {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
 `;
 const Image = styled.img`
-  width: 300px;
-  height: 300px;
+  min-width: 180px;
+  height: 180px;
+  object-fit: cover;
 `;
 const InfoProduct = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 3rem 1rem;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  padding: 1.5rem 1rem;
+  width: 100%;
+  align-items: center;
+`;
+const Span = styled.span`
+  font-weight: bold;
 `;
 const ProductName = styled.div`
   font-size: 20px;
@@ -85,10 +96,15 @@ export const CartItem = prop => {
       <Wrapper>
         <Image src={img} />
         <InfoProduct>
-          <ProductName>{productName}</ProductName>
-          <ProductPrice>${productPrice}</ProductPrice>
+          <ProductName>
+            <Span>Product: </Span>
+            {productName}
+          </ProductName>
+          <ProductPrice>
+            <Span>Price: </Span>${productPrice}
+          </ProductPrice>
           <ColorContainer>
-            Color:
+            <Span>Color: </Span>
             {color.map(item => (
               <Color ProductColor={item}></Color>
             ))}

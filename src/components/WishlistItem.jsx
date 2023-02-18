@@ -4,25 +4,36 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { useContext, useState } from 'react';
 import { ShopContext } from '../context/shop-context';
 
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-`;
+const Container = styled.div``;
 const Wrapper = styled.div`
   display: flex;
-  height: 20rem;
   margin-bottom: 3rem;
   margin-top: 1rem;
   column-gap: 1.5rem;
   row-gap: 2rem;
-
+  padding: 1rem;
   position: relative;
   width: 100%;
-  max-width: 600px;
+  transition: all 200ms ease;
+  border-radius: 5px;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  &:hover {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
 `;
 const Image = styled.img`
-  width: 300px;
-  height: 300px;
+  min-width: 180px;
+  height: 180px;
+  object-fit: cover;
+`;
+const Info = styled.div`
+  display: grid;
+  padding: 1.5rem 1rem;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  width: 100%;
+  align-items: center;
 `;
 const ProductName = styled.div`
   font-size: 20px;
@@ -30,14 +41,7 @@ const ProductName = styled.div`
 const ProductPrice = styled.div`
   font-size: 16px;
 `;
-const Info = styled.div`
-  row-gap: 3rem;
-  display: flex;
-  flex-direction: column;
-  padding: 3rem 1rem;
-  justify-content: space-evenly;
-  align-items: start;
-`;
+
 const Icons = styled.div`
   display: flex;
 `;
@@ -60,13 +64,13 @@ const RemoveContainer = styled.div`
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  padding: 2rem;
+  padding: 1rem;
   border-radius: 5px;
 `;
 const RemoveItem = styled.div`
   background-color: rgba(255, 255, 255, 0.95);
   border-radius: 0.3rem;
-  width: 100%;
+  width: 35rem;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -115,7 +119,7 @@ const AddedContainer = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 3px;
-  width: 60%;
+  width: 15rem;
   height: 45%;
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.8);

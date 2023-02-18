@@ -26,8 +26,8 @@ export const ShopContextProvider = prop => {
 
   const WishListItems = () => {
     let items = 0;
-    for (let item in wishItems) {
-      items += wishItems[item];
+    for (const item in wishItems) {
+      if (wishItems[item] > 0) items += wishItems[item];
     }
     return items;
   };
