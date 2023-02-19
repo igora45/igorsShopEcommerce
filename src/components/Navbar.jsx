@@ -15,7 +15,6 @@ const Container = styled.div`
   position: sticky;
   top: 0;
   z-index: 100;
-  ${mobile({ height: '50px' })}
 `;
 const Wrapper = styled.div`
   height: 4.5rem;
@@ -25,6 +24,7 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  ${prop => mobile({ height: '4.5rem' })}
   ${prop =>
     prop.value &&
     mobile({
