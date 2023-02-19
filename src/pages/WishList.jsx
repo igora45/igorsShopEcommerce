@@ -14,14 +14,15 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
-  min-height: 56vh;
+  min-height: 53vh;
   max-width: 1600px;
   margin: 0 auto;
 `;
-const Title = styled.div`
+const Title = styled.p`
   font-size: 40px;
   font-weight: 100;
   text-align: center;
+  margin-bottom: 12px;
 `;
 const Top = styled.div`
   display: flex;

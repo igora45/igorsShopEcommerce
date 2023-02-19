@@ -11,7 +11,7 @@ import { AllProducts } from '../data';
 const Container = styled.div``;
 const Wrapper = styled.div`
   padding: 20px;
-  min-height: 50vh;
+  min-height: 53vh;
   display: grid;
   grid-template-columns: 1fr auto;
   grid-template-rows: auto auto auto;
@@ -29,16 +29,12 @@ const Title = styled.p`
   text-align: center;
   grid-area: a;
 `;
-const Total = styled.div`
-  display: flex;
-  justify-content: center;
-  margin: 20px 0;
-`;
+
 const Top = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 30px 0;
+  margin: 0 0 30px 0;
   margin-bottom: 3rem;
   grid-area: b;
 `;
