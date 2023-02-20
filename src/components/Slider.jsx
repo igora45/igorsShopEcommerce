@@ -3,14 +3,14 @@ import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutl
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import { sliderItems } from '../data';
 import { useState } from 'react';
-import { Categories } from './Categories';
+import { mobile } from '../responsive';
 
 const Container = styled.div`
   width: 100%;
-  min-height: 100vh;
   display: flex;
   position: relative;
   overflow: hidden;
+  ${mobile({ display: 'none' })}
 `;
 const Arrow = styled.div`
   width: 40px;
@@ -47,26 +47,44 @@ const Slide = styled.div`
 const ImgContainer = styled.div`
   height: 100%;
   flex: 1;
+  @media only screen and (max-width: 1280px) {
+    display: none;
+  }
 `;
 const Image = styled.img`
   height: 80%;
   width: 750px;
-
-  @media (max-width: 1500px) {
-    width: 600px;
-  }
 `;
 const InfoContainer = styled.div`
   flex: 1;
+  @media only screen and (max-width: 1500px) {
+    width: 30rem;
+  }
+  @media only screen and (max-width: 1280px) {
+    width: 100%;
+    text-align: center;
+  }
 `;
 const Title = styled.h1`
   font-size: 5rem;
+  @media only screen and (max-width: 1500px) {
+    font-size: 3.5rem;
+  }
 `;
 const Desc = styled.p`
   margin: 50px 0;
   font-size: 20px;
   font-weight: 500;
   letter-spacing: 3px;
+  @media only screen and (max-width: 1500px) {
+    max-width: 30rem;
+    font-size: 18px;
+  }
+  @media only screen and (max-width: 1280px) {
+    width: 100%;
+    font-size: 18px;
+    margin: 50px auto;
+  }
 `;
 const Button = styled.button`
   padding: 10px;

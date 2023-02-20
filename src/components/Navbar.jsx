@@ -14,11 +14,12 @@ import MenuIcon from '@mui/icons-material/Menu';
 const Container = styled.div`
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 10;
 `;
 const Wrapper = styled.div`
   height: 4.5rem;
   background: white;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   box-sizing: border-box;
   padding: 10px 2rem;
   display: flex;
@@ -124,7 +125,7 @@ const OpenSidebar = styled.button`
   ${prop =>
     mobile({
       position: 'absolute',
-      top: '2rem',
+      top: '2.5rem',
       right: '1rem',
       transform: 'translateY(-50%)',
     })}
@@ -138,9 +139,18 @@ export const Navbar = () => {
     openRegister,
     setOpenRegister,
     WishListItems,
+    setResponsiveValue,
+    responsiveValue,
   } = useContext(ShopContext);
 
-  const [responsiveValue, setResponsiveValue] = useState(false);
+  const OpenRegisterFunc = () => {
+    setOpenRegister(true);
+    setResponsiveValue(false);
+  };
+  const OpenLoginFunc = () => {
+    setOpenLogin(true);
+    setResponsiveValue(false);
+  };
   return (
     <Container>
       <LoginContainer>
@@ -163,13 +173,10 @@ export const Navbar = () => {
           </Logo>
         </Center>
         <Right value={responsiveValue}>
-          <MenuLink
-            value={responsiveValue}
-            onClick={() => setOpenRegister(true)}
-          >
+          <MenuLink value={responsiveValue} onClick={() => OpenRegisterFunc()}>
             REGISTER
           </MenuLink>
-          <MenuLink value={responsiveValue} onClick={() => setOpenLogin(true)}>
+          <MenuLink value={responsiveValue} onClick={() => OpenLoginFunc()}>
             SIGN IN
           </MenuLink>
           <MenuLink to="/wishlist">

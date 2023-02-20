@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   column-gap: 1.5rem;
   row-gap: 2rem;
   padding: 1rem;
+  box-sizing: border-box;
   position: relative;
   width: 100%;
   transition: all 200ms ease;
@@ -21,25 +22,37 @@ const Wrapper = styled.div`
   &:hover {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   }
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+    align-items: center;
+  } ;
 `;
 const Image = styled.img`
-  min-width: 180px;
+  width: 100%;
+  max-width: 180px;
   height: 180px;
-  object-fit: cover;
+  object-fit: cover; ;
 `;
 const Info = styled.div`
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5rem;
   padding: 1.5rem 1rem;
-  grid-template-columns: 1fr auto;
-  grid-template-rows: auto auto;
   width: 100%;
-  align-items: center;
+`;
+const ProductInfoContainer = styled.div`
+  display: flex;
+`;
+const ProductText = styled.div`
+  font-weight: bold;
 `;
 const ProductName = styled.div`
   font-size: 20px;
+  display: flex;
 `;
 const ProductPrice = styled.div`
   font-size: 16px;
+  display: flex;
 `;
 
 const Icons = styled.div`
@@ -119,7 +132,7 @@ const AddedContainer = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 3px;
-  width: 15rem;
+  width: 10rem;
   height: 45%;
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.8);
@@ -155,8 +168,17 @@ export const WishlistItem = ({ item }) => {
       <Wrapper>
         <Image src={item.img} />
         <Info>
-          <ProductName>{item.productName}</ProductName>
-          <ProductPrice>${item.productPrice}</ProductPrice>
+          <ProductInfoContainer>
+            <ProductName>
+              <ProductText>Product: </ProductText>
+              {item.productName}
+            </ProductName>
+          </ProductInfoContainer>
+          <ProductInfoContainer>
+            <ProductPrice>
+              <ProductText>Price: </ProductText>${item.productPrice}
+            </ProductPrice>
+          </ProductInfoContainer>
           <Icons>
             <Icon onClick={() => setRemove(true)}>
               <FavoriteBorderOutlinedIcon style={{ color: 'red' }} />

@@ -8,6 +8,7 @@ import { Newsletter } from '../components/Newsletter';
 import { WishlistItem } from '../components/WishlistItem';
 import { ShopContext } from '../context/shop-context';
 import { AllProducts } from '../data';
+import { mobile } from '../responsive';
 
 const Container = styled.div``;
 const Wrapper = styled.div`
@@ -16,7 +17,7 @@ const Wrapper = styled.div`
   padding: 20px;
   min-height: 53vh;
   max-width: 1600px;
-  margin: 0 auto;
+  margin: 0 auto; ;
 `;
 const Title = styled.p`
   font-size: 40px;
@@ -30,6 +31,11 @@ const Top = styled.div`
   align-items: center;
   margin: 30px 0;
   margin-bottom: 3rem;
+  ${mobile({ justifyContent: 'center', columnGap: '1rem' })}
+  @media only screen and (max-width: 400px) {
+    flex-direction: column;
+    row-gap: 1rem;
+  }
 `;
 const TopButton = styled(Link)`
   background: none;
@@ -43,6 +49,9 @@ const TopButton = styled(Link)`
 const TopTexts = styled.div`
   display: flex;
   column-gap: 1rem;
+  @media only screen and (max-width: 800px) {
+    display: none;
+  }
 `;
 const TopText = styled(Link)`
   text-decoration: underline;
@@ -66,14 +75,18 @@ export const WishList = () => {
       <Wrapper>
         <Title>WISHLIST</Title>
         <Top>
-          <TopButton to="/">CONTINUE SHOPPING</TopButton>
+          <TopButton to="/" close="no">
+            CONTINUE SHOPPING
+          </TopButton>
           <TopTexts>
             <TopText to="/cart">Shopping Bag ({BagItems()})</TopText>
             <TopText to="/wishlist">Your Wishlist ({WishListItems()})</TopText>
           </TopTexts>
-          <TopButton type="filled">CHECKOUT NOW</TopButton>
+          <TopButton type="filled" close="yes">
+            CHECKOUT NOW
+          </TopButton>
         </Top>
-        <Center>
+        <Center key="">
           {AllProducts.map(product => {
             if (wishItems[product.id] > 0) {
               return <WishlistItem item={product} />;

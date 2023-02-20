@@ -24,9 +24,14 @@ const Wrapper = styled.div`
   &:hover {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   }
+  @media only screen and (max-width: 630px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 const Image = styled.img`
-  min-width: 180px;
+  width: 100%;
+  max-width: 180px;
   height: 180px;
   object-fit: cover;
 `;
@@ -37,21 +42,45 @@ const InfoProduct = styled.div`
   padding: 1.5rem 1rem;
   width: 100%;
   align-items: center;
+  @media only screen and (max-width: 800px) {
+    grid-template-areas:
+      'a a'
+      'b b'
+      'c d';
+    row-gap: 1rem;
+  }
+  @media only screen and (max-width: 300px) {
+    grid-template-areas:
+      'a a'
+      'b b'
+      'c c'
+      'd d';
+    row-gap: 1rem;
+  }
 `;
 const Span = styled.span`
   font-weight: bold;
 `;
 const ProductName = styled.div`
   font-size: 20px;
+  @media only screen and (max-width: 800px) {
+    grid-area: a;
+  }
 `;
 const ProductPrice = styled.div`
   font-size: 16px;
+  @media only screen and (max-width: 800px) {
+    grid-area: b;
+  }
 `;
 const InfoItems = styled.div``;
 const ColorContainer = styled.div`
   display: flex;
   font-size: 18px;
   align-items: center;
+  @media only screen and (max-width: 800px) {
+    grid-area: c;
+  }
 `;
 const Color = styled.div`
   height: 25px;
@@ -64,6 +93,9 @@ const Color = styled.div`
 const ItemsQtt = styled.div`
   display: flex;
   align-items: center;
+  @media only screen and (max-width: 800px) {
+    grid-area: d;
+  }
 `;
 const ButtonQtt = styled.button`
   height: 1rem;

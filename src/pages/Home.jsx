@@ -7,7 +7,6 @@ import { Navbar } from '../components/Navbar';
 import { Newsletter } from '../components/Newsletter';
 import { Products } from '../components/Products';
 import { Slider } from '../components/Slider';
-import { Login } from './Login';
 
 const Container = styled.div``;
 

@@ -13,12 +13,17 @@ import paymentImage from '../assets/footer/payment.png';
 const Container = styled.div`
   display: flex;
   min-height: 30vh;
+  @media only screen and (max-width: 1000px) {
+    flex-direction: column;
+  }
+  overflow-x: hidden;
 `;
 const Left = styled.div`
   flex: 1;
   padding: 20px;
   display: flex;
   flex-direction: column;
+  max-width: 30rem;
 `;
 
 const Logo = styled.h1``;
@@ -28,6 +33,8 @@ const Desc = styled.div`
 const SocialContainer = styled.div`
   display: flex;
   column-gap: 1rem;
+  flex-wrap: wrap;
+  row-gap: 1rem;
 `;
 const SocialIcon = styled.a`
   height: 40px;
@@ -55,10 +62,14 @@ const List = styled.ul`
   list-style: none;
   width: 100%;
   padding: 0;
+  @media only screen and (max-width: 1000px) {
+    flex-direction: column;
+  }
 `;
 const ListItem = styled.li`
   width: 50%;
   margin-bottom: 10px;
+  cursor: pointer;
 `;
 
 const Right = styled.div`
@@ -70,7 +81,10 @@ const ContactItem = styled.div`
   display: flex;
   align-items: center;
 `;
-const Image = styled.img``;
+const Image = styled.img`
+  width: 100%;
+  max-width: 12rem;
+`;
 const IconMarginStyle = {
   marginRight: '10px',
 };

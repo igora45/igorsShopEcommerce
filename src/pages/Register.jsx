@@ -28,6 +28,7 @@ const Wrapper = styled.div`
 const Title = styled.p`
   font-size: 30px;
   margin-bottom: 1rem;
+  margin-right: 3rem;
 `;
 const CloseRegister = styled.button`
   text-decoration: none;
@@ -54,6 +55,9 @@ const Input = styled.input`
   }
   &::placeholder {
     color: darkgray;
+  }
+  @media only screen and (max-width: 1000px) {
+    width: 100%;
   }
 `;
 const Agreement = styled.p`
@@ -127,7 +131,9 @@ export const Register = () => {
               onClick={() => setChecked(!checked)}
               placeholder="confirm password"
             />
-            <Button disabled={() => true}>CREATE ACCOUNT</Button>
+            <Button onClick={() => setOpenRegister(false)}>
+              CREATE ACCOUNT
+            </Button>
             <Linkbtn onClick={goToLogin}>
               Already has an account ? <br />
               Login

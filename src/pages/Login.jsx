@@ -100,7 +100,11 @@ export const Login = () => {
             <Form>
               <Input type="text" placeholder="email" />
               <Input type="password" placeholder="password" />
-              <Submit type="submit" value="LOGIN" />
+              <Submit
+                onClick={() => setOpenLogin(false)}
+                type="submit"
+                value="LOGIN"
+              />
             </Form>
             <LinkContainer>
               <Linkbtn>I DON'T REMEMBER THE PASSWORD</Linkbtn>

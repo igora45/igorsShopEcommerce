@@ -17,6 +17,7 @@ const Wrapper = styled.div`
 const Title = styled.p`
   font-size: 40px;
   text-align: center;
+  margin: 0 1rem;
   margin-bottom: 3rem;
 `;
 

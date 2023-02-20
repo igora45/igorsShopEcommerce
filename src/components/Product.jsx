@@ -31,9 +31,17 @@ const Container = styled.div`
   }
 `;
 const Image = styled.img`
-  width: 100%;
-  height: 100%;
+  min-width: 250px;
+  height: 250px;
   z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  @media only screen and (max-width: 400px) {
+    min-width: 200px;
+    height: 200px;
+  }
 `;
 
 const Icon = styled.button`
@@ -47,16 +55,20 @@ const Icon = styled.button`
   margin: 5px;
   cursor: pointer;
   border: 1px solid transparent;
+  color: #0000ee;
   &:hover {
     background-color: #f3f8fd;
     transform: scale(1.1);
   }
 `;
 const Circle = styled.div`
-  width: 250px;
-  height: 250px;
+  width: 80%;
+  height: 80%;
   border-radius: 50%;
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: white;
 `;
 
@@ -79,6 +91,7 @@ const Title = styled.p`
   color: white;
   margin-bottom: 1rem;
   font-size: 20px;
+  text-align: center;
 `;
 const Emoji = styled.p`
   color: white;

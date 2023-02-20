@@ -16,6 +16,7 @@ export const ShopContextProvider = prop => {
   const [wishItems, setWishItems] = useState(getDefaultValue());
   const [openRegister, setOpenRegister] = useState(false);
   const [openLogin, setOpenLogin] = useState(false);
+  const [responsiveValue, setResponsiveValue] = useState(false);
 
   const AddToWishList = itemId => {
     setWishItems(prev => ({ ...prev, [itemId]: 1 }));
@@ -58,6 +59,8 @@ export const ShopContextProvider = prop => {
   };
 
   const context = {
+    responsiveValue,
+    setResponsiveValue,
     WishListItems,
     wishItems,
     setWishItems,
