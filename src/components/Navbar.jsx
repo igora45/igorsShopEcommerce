@@ -179,7 +179,7 @@ export const Navbar = () => {
           <MenuLink value={responsiveValue} onClick={() => OpenLoginFunc()}>
             SIGN IN
           </MenuLink>
-          <MenuLink to="/wishlist">
+          <MenuLink to="/wishlist" onClick={() => setResponsiveValue(false)}>
             <Badge badgeContent={WishListItems()} color="primary">
               <FavoriteBorderOutlinedIcon
                 style={{ fontSize: '1.7rem' }}
@@ -187,7 +187,7 @@ export const Navbar = () => {
               />
             </Badge>
           </MenuLink>
-          <MenuLink to="/cart">
+          <MenuLink to="/cart" onClick={() => setResponsiveValue(false)}>
             <Badge badgeContent={BagItems()} color="primary">
               <ShoppingCartOutlinedIcon
                 style={{ fontSize: '1.7rem' }}
