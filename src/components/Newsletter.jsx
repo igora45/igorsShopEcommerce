@@ -15,6 +15,9 @@ const Container = styled.div`
 const Title = styled.h1`
   font-size: 70px;
   ${mobile({ fontSize: '50px' })}
+  @media only screen and (max-width: 300px) {
+    font-size: 35px;
+  }
 `;
 const Desc = styled.div`
   font-size: 20px;
@@ -25,6 +28,10 @@ const FormContainer = styled.form`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media only screen and (max-width: 300px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 const Input = styled.input`
   padding: 8px 5px;
@@ -37,6 +44,9 @@ const Input = styled.input`
   flex: 10;
   &::placeholder {
     color: darkgray;
+  }
+  @media only screen and (max-width: 300px) {
+    width: 100%;
   }
 `;
 const Button = styled.button`

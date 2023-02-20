@@ -42,6 +42,10 @@ const Image = styled.img`
     min-width: 200px;
     height: 200px;
   }
+  @media only screen and (max-width: 300px) {
+    min-width: 180px;
+    height: 180px;
+  }
 `;
 
 const Icon = styled.button`

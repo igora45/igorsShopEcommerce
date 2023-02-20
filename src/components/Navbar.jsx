@@ -168,7 +168,11 @@ export const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center value={responsiveValue}>
-          <Logo value={responsiveValue} to="/">
+          <Logo
+            value={responsiveValue}
+            to="/"
+            onClick={() => setResponsiveValue(false)}
+          >
             IGOR.
           </Logo>
         </Center>

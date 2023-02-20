@@ -19,6 +19,7 @@ const Title = styled.p`
   text-align: center;
   margin: 0 1rem;
   margin-bottom: 3rem;
+  overflow-x: hidden;
 `;
 
 export const Products = () => {
